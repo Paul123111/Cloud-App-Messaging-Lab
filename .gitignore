@@ -7,4 +7,5 @@ node_modules
 .cdk.staging
 cdk.out
 response.json
-.DS_Store
+
+env.*
