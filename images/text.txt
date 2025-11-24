@@ -1,0 +1,1 @@
+test file for rejecting files that aren't JPEG or PNG
