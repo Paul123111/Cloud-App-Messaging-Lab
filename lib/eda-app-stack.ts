@@ -119,6 +119,7 @@ export class EDAAppStack extends cdk.Stack {
       maxBatchingWindow: cdk.Duration.seconds(10),
     });
 
+    rejectedImageFn.addEventSource(rejectedImageEventSource);
 
     // Permissions
     imagesBucket.grantRead(processImageFn);
