@@ -18,11 +18,12 @@ export const handler: SQSHandler = async (event) => {
   console.log("Event ", JSON.stringify(event));
   for (const record of event.Records) {
     const recordBody = JSON.parse(record.body);        // Parse SQS message
-    const snsMessage = JSON.parse(recordBody.Message); // Parse SNS message
+    //console.log("testing ", JSON.stringify(recordBody));
+    //const snsMessage = JSON.parse(recordBody.Message); // Parse SNS message
 
-    if (snsMessage.Records) {
-      console.log("Record body ", JSON.stringify(snsMessage));
-      for (const s3Message of snsMessage.Records) {
+    if (recordBody.Records) {
+      console.log("Record body ", JSON.stringify(recordBody));
+      for (const s3Message of recordBody.Records) {
         const s3e = s3Message.s3;
         // Object key may have spaces or unicode non-ASCII characters.
         const srcKey = decodeURIComponent(s3e.object.key.replace(/\+/g, " "));
